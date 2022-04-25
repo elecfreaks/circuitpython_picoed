@@ -12,7 +12,9 @@ CircuitPython driver for the Pico:ed matrix display.
 try:
     from adafruit_is31fl3731 import IS31FL3731
 except:
-    raise ImportError("no module named 'adafruit_is31fl3731'. see: https://github.com/adafruit/Adafruit_CircuitPython_IS31FL3731.git")
+    raise ImportError(
+        "no module named 'adafruit_is31fl3731'. see: https://github.com/adafruit/Adafruit_CircuitPython_IS31FL3731.git"
+    )
 
 _BITMAP = (
     bytes((0x00, 0x00, 0x00, 0x00, 0x00)),
@@ -112,6 +114,7 @@ _BITMAP = (
     bytes((0x18, 0x04, 0x18, 0x20, 0x18)),
 )
 
+
 class Display(IS31FL3731):
     """Supports the Pico:ed display by ELECFREAKS"""
 
@@ -145,7 +148,7 @@ class Display(IS31FL3731):
     def clear(self):
         self.fill(0)
 
-    def scroll(self, value, brightness = 30):
+    def scroll(self, value, brightness=30):
         if brightness < 0:
             brightness = 0
         if brightness > 255:
@@ -162,16 +165,16 @@ class Display(IS31FL3731):
             text += '   '
 
         if len(text) == 3:
-            for bufIndex in range(len(buf)):
-                font = bytearray(_BITMAP[ord(text[bufIndex // 6]) - 32])
+            for buf_index in range(len(buf)):
+                font = bytearray(_BITMAP[ord(text[buf_index // 6]) - 32])
                 font.append(0)
-                buf[bufIndex] = font[bufIndex % 6]
+                buf[buf_index] = font[buf_index % 6]
             self._draw(buf, brightness)
         else:
-            for textIndex in range(len(text) * 6):
-                for bufIndex in range(len(buf) - 1):
-                    buf[bufIndex] = buf[bufIndex + 1]
-                font = bytearray(_BITMAP[ord(text[textIndex // 6]) - 32])
+            for text_index in range(len(text) * 6):
+                for buf_index in range(len(buf) - 1):
+                    buf[buf_index] = buf[buf_index + 1]
+                font = bytearray(_BITMAP[ord(text[text_index // 6]) - 32])
                 font.append(0)
-                buf[len(buf) - 1] = font[textIndex % 6]
+                buf[len(buf) - 1] = font[text_index % 6]
                 self._draw(buf, brightness)
