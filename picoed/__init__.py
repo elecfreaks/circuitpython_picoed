@@ -13,6 +13,7 @@ import board
 import busio
 from .display import Display
 from .button import Button
+from .buzzer import *
 
 __version__ = "0.1.0"
 __repo__ = "https://github.com/elecfreaks/circuitpython_picoed.git"
@@ -22,4 +23,6 @@ display = Display(i2c)
 
 button_a = Button("A")
 button_b = Button("B")
-button_ab = Button("AB")
+
+note = Note()
+buzzers = Buzzer()
