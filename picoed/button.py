@@ -6,7 +6,7 @@ class Button():
 
     def __init__(self,button):
         if button == "A":
-            self.button_pin = digitalio.DigitalInOut(board.BUTTON_A)
+            self._button_pin = digitalio.DigitalInOut(board.BUTTON_A)
         elif button == "B":
             self._button_pin = digitalio.DigitalInOut(board.BUTTON_B)
         else:
