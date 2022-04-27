@@ -1,18 +1,13 @@
-import board
 import digitalio
+import microcontroller
 
 class Button():
-    """"Supports the Pico:ed display by ELECFREAKS"""
+    """"Supports the Pico:ed button by ELECFREAKS"""
 
-    def __init__(self,button):
-        if button == "A":
-            self._button_pin = digitalio.DigitalInOut(board.BUTTON_A)
-        elif button == "B":
-            self._button_pin = digitalio.DigitalInOut(board.BUTTON_B)
-        else:
-            raise ValueError('Parameter error,please select "A", "B"')
+    def __init__(self,pin:microcontroller.Pin):
+        self._pin = digitalio.DigitalInOut(pin)
 
 
     def is_pressed(self):
         """Returns True when the key is pressed"""
-        return not self._button_pin.value
+        return not self._pin.value

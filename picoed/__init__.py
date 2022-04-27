@@ -13,7 +13,6 @@ import board
 import busio
 from .display import Display
 from .button import Button
-from .buzzer import *
 
 __version__ = "0.1.0"
 __repo__ = "https://github.com/elecfreaks/circuitpython_picoed.git"
@@ -21,8 +20,5 @@ __repo__ = "https://github.com/elecfreaks/circuitpython_picoed.git"
 i2c = busio.I2C(board.SCL, board.SDA)
 display = Display(i2c)
 
-button_a = Button("A")
-button_b = Button("B")
-
-note = Note()
-buzzers = Buzzer()
+button_a = Button(board.BUTTON_A)
+button_b = Button(board.BUTTON_B)
