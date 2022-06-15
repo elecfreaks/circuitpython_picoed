@@ -12,6 +12,7 @@ The Pico:ed build-in modules for CircuitPython.
 import board
 import busio
 from .display import Display
+from .display import Image
 from .button import Button
 from elecfreaks_music import Music
 
