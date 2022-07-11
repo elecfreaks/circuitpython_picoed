@@ -14,6 +14,7 @@ import busio
 from .display import Display
 from .display import Image
 from .button import Button
+from .led import Led
 from elecfreaks_music import Music
 
 __version__ = "0.1.0"
@@ -34,5 +35,5 @@ except RuntimeError:
 
 button_a = Button(board.BUTTON_A)
 button_b = Button(board.BUTTON_B)
-
+led = Led(board.LED)
 music = Music(_buzzer_pin)
